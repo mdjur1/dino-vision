@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+
+# dataset and large outputs stay off GitHub
+data/
+results/*.npz
+results/*.joblib
+
+# keep the plots + metrics so the README images work
+!results/.gitkeep

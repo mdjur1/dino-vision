@@ -1,0 +1,10 @@
+{
+  "knn": {
+    "accuracy": 0.9316,
+    "macro_f1": 0.9303
+  },
+  "linear_probe": {
+    "accuracy": 0.9509,
+    "macro_f1": 0.95
+  }
+}
