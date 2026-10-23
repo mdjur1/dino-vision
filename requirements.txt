@@ -6,3 +6,4 @@ matplotlib
 pillow
 tqdm
 joblib
+opencv-python
