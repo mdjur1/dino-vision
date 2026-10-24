@@ -6,8 +6,8 @@ venv/
 
 # dataset and large outputs stay off GitHub
 data/
-results/*.npz
-results/*.joblib
+*.npz
+*.joblib
 
 # keep the plots + metrics so the README images work
 !results/.gitkeep
