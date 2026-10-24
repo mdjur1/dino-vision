@@ -63,6 +63,18 @@ No GPU? Use Google Colab (`Runtime → Change runtime type → T4 GPU`) and run 
 
 
 
+\## How many labels does DINO need?
+
+
+
+!\[few-shot](results/few\_shot.png)
+
+
+
+With only 5 labeled images per breed, the linear probe already reaches 88.1% accuracy (vs. 95.1% with the full training set).
+
+
+
 \## Live webcam demo (OpenCV)
 
 
@@ -71,12 +83,9 @@ No GPU? Use Google Colab (`Runtime → Change runtime type → T4 GPU`) and run 
 
 
 
-!\[webcam demo](results/webcam\_pca\_101500.png)
-
 ## Next steps
 
 * Compare against **DINOv3** (Aug 2025) and a supervised ImageNet ResNet-50 baseline
-* Few-shot: how accuracy changes with 1, 5, 10 labeled images per class
 * Train a small segmentation head on the patch tokens
 
 ## References
