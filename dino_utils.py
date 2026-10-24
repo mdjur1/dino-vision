@@ -55,3 +55,35 @@ def dino_features(model, batch):
     """Return (cls_embedding [B, D], patch_tokens [B, N, D]) for a normalized batch."""
     out = model.forward_features(batch)
     return out["x_norm_clstoken"], out["x_norm_patchtokens"]
+
+
+@torch.no_grad()
+def embed_paths(model, device, paths, transform, batch_size=32, progress=True):
+    """Embed a list of image files. Skips unreadable files.
+
+    Returns (features [N, D] numpy array, list of the paths that worked).
+    """
+    import numpy as np
+    from tqdm import tqdm
+
+    feats, kept, batch, batch_paths = [], [], [], []
+
+    def flush():
+        cls, _ = dino_features(model, torch.stack(batch).to(device))
+        feats.append(cls.cpu().numpy())
+        kept.extend(batch_paths)
+        batch.clear()
+        batch_paths.clear()
+
+    for p in tqdm(paths, desc="Embedding", disable=not progress):
+        try:
+            batch.append(transform(load_image(p)))
+            batch_paths.append(p)
+        except Exception as e:  # a few dataset images are corrupt
+            print(f"Skipping {p}: {e}")
+            continue
+        if len(batch) == batch_size:
+            flush()
+    if batch:
+        flush()
+    return np.concatenate(feats).astype(np.float32), kept
