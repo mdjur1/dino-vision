@@ -61,6 +61,18 @@ Other options:
 
 No GPU? Use Google Colab (`Runtime → Change runtime type → T4 GPU`) and run the same commands with `!` in front.
 
+
+
+\## Live webcam demo (OpenCV)
+
+
+
+`webcam\_demo.py` uses OpenCV to capture webcam frames, runs DINOv2 on each one, and draws either live breed predictions or the patch-PCA view in real time.
+
+
+
+!\[webcam demo](results/webcam\_pca\_101500.png)
+
 ## Next steps
 
 * Compare against **DINOv3** (Aug 2025) and a supervised ImageNet ResNet-50 baseline
